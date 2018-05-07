@@ -1,4 +1,4 @@
-FROM umiqlo/docker-arm-jdk
+FROM umiqlo/docker-arm-rpi:arm-jdk8
 
 WORKDIR /opt/paperSpigot-mc
 
@@ -6,7 +6,7 @@ CMD ["/bin/bash"]
 
 RUN wget https://ci.destroystokyo.com/job/Paper/lastSuccessfulBuild/artifact/paperclip.jar \
 	&& echo "eula=true" > eula.txt \
-	&& echo "cd /opt/spigot-mc && java -Xms512M -Xmx1008M -jar /opt/spigot-mc/paperclip.jar" >> minecraft.sh \
+	&& echo "cd /opt/paperSpigot-mc && java -Xms512M -Xmx1008M -jar /opt/spigot-mc/paperclip.jar" >> minecraft.sh \
 	&& cat minecraft.sh \
 	&& chmod +x minecraft.sh
 
