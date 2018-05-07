@@ -2,8 +2,8 @@ FROM ubuntu
 
 WORKDIR /opt/java
 
-RUN apt-get update \
-	&& DEBIAN_FRONTEND=noninteractive apt-get install wget git screen unzip sed -y \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update \
+	&& apt-get install wget git screen unzip sed -y \
 	&& wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-linux-arm32-vfp-hflt.tar.gz \
 	&& tar -zxvf jdk-8u172-linux-arm32-vfp-hflt.tar.gz \
 	&& rm -rf jdk-8u172-linux-arm32-vfp-hflt.tar.gz \
