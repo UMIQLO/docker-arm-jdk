@@ -1,4 +1,4 @@
-FROM umiqlo/docker-arm-rpi:arm-jdk8
+FROM umiqlo/arm-jdk8
 
 WORKDIR /opt/paperSpigot-mc
 
