@@ -1,11 +1,11 @@
 version: "3"
 services:
   pihole:
-    image: umiqlo/docker-arm-jdk
-    container_name: paperSpigot-mc
+    image: paper-spigot-mc
+    container_name: minecraft
     ports:
       - "25565:21315"
       - "25575:25575"
     volumes:
-      - './pihole/:/etc/pihole/'
+      - './minecraft_data/:/opt/paperSpigot-mc'
     restart: always
