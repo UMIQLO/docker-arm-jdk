@@ -10,8 +10,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
 	&& update-alternatives --install /usr/bin/java java /opt/java/jdk1.8.0_172/bin/java 1 \
 	&& update-alternatives --install /usr/bin/javac javac /opt/java/jdk1.8.0_172/bin/javac 1 \
 	&& update-alternatives --config java \
-	&& update-alternatives --config javac \
-	&& java -version \
-	&& javac -version
+	&& update-alternatives --config javac
+	
+	# Prevent Dockerhub build error
+	# && java -version \
+	# && javac -version
 
 CMD ["/bin/bash"]
