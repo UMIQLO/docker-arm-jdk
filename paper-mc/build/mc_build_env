@@ -1,0 +1,41 @@
+#!/bin/bash
+
+if [ "$BUILD_VERSION" = "latest" ]; then
+	URL="https://ci.destroystokyo.com/job/Paper/lastSuccessfulBuild/artifact/paperclip.jar"
+elif [ "$BUILD_VERSION" = "1.12.2" ]; then
+	URL="https://ci.destroystokyo.com/job/Paper/1414/artifact/paperclip.jar"
+elif [ "$BUILD_VERSION" = "1.11.2" ]; then
+	URL="https://ci.destroystokyo.com/job/Paper/1104/artifact/paperclip.jar"
+elif [ "$BUILD_VERSION" = "1.10.2" ]; then
+	URL="https://ci.destroystokyo.com/job/Paper/916/artifact/paperclip.jar"
+elif [ "$BUILD_VERSION" = "1.9.4" ]; then
+	URL="https://ci.destroystokyo.com/job/Paper/773/artifact/paperclip.jar"
+elif [ "$BUILD_VERSION" = "1.8.8" ]; then
+	URL="https://ci.destroystokyo.com/job/Paper/443/artifact/Paperclip.jar"
+else
+	echo "Version Error! (Your Selection: [$BUILD_VERSION])"
+	echo "Only Support [latest / 1.12.2 / 1.11.2 / 1.10.2 / 1.9.4 / 1.8.8]"
+	exit 0
+fi
+
+# create backup
+mkdir backup
+# write out current crontab
+crontab -l > tmpCron
+# echo new cron into cron file
+echo "05 4 * * *  /opt/paper-mc/mc_cron_backup >/dev/null 2>&1" >> tmpCron
+# install new cron file
+crontab tmpCron
+rm tmpCron
+
+jarServer=paperclip-$BUILD_VERSION.jar
+
+wget $URL -O $jarServer
+echo "eula=true" > eula.txt
+echo "java -Xms${MIN_RAM}M -Xmx${MAX_RAM}M -jar $jarServer"
+
+mv eula.txt server/
+mv $jarServer server/
+cd server/
+
+java -Xms${MIN_RAM}M -Xmx${MAX_RAM}M -jar $jarServer

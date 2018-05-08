@@ -1,0 +1,18 @@
+version: "3"
+services:
+  minecraft:
+    image: umiqlo/paper-mc
+    container_name: minecraft
+    ports:
+      - "21315:25565/udp"
+      - "21315:25565/tcp"
+      - "25575:25575/udp"
+      - "25575:25575/tcp"
+    volumes:
+      - './minecraft_data/:/opt/paper-mc/server'
+      - './minecraft_backup/:/opt/paper-mc/backup'
+    environment:
+      - BUILD_VERSION=latest
+      - MIN_RAM=512
+      - MAX_RAM=1008
+    restart: always
