@@ -1,4 +1,4 @@
-FROM umiqlo/arm-jdk8
+FROM umiqlo/arm-jdk8-base
 
 WORKDIR /opt/paper-mc
 
