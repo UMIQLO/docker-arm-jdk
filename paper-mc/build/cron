@@ -1,4 +1,4 @@
 #!/bin/bash
 day=$(date +%A)
 zip="$day-MinecraftServer.tar.gz"
-tar zcvf $(pwd)/backup/$zip server
+tar zcvf /opt/paper-mc/backup/$zip /opt/paper-mc/server

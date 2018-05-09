@@ -9,10 +9,11 @@ services:
       - "25575:25575/udp"
       - "25575:25575/tcp"
     volumes:
-      - './minecraft_data/:/opt/paper-mc/server'
-      - './minecraft_backup/:/opt/paper-mc/backup'
+      - './server:/opt/paper-mc/server'
+      - './backup:/opt/paper-mc/backup'
     environment:
       - BUILD_VERSION=latest
       - MIN_RAM=512
       - MAX_RAM=1008
     restart: always
+    
