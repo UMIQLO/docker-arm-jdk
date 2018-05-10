@@ -1,7 +1,7 @@
 version: "3"
 services:
   minecraft:
-    image: umiqlo/paper-mc
+    image: umiqlo/papermc-armhf
     container_name: minecraft
     ports:
       - "21315:25565/udp"
@@ -16,4 +16,3 @@ services:
       - MIN_RAM=512
       - MAX_RAM=1008
     restart: always
-    
