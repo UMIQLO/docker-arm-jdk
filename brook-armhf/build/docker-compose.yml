@@ -1,0 +1,22 @@
+version: "3"
+services:
+  brook:
+    image: umiqlo/brook-armhf
+    container_name: brook
+    ports:
+      - "20000:21314/udp"
+      - "20000:21314/tcp"
+    environment:
+      - TYPE=brook
+      - SERVER_PW=123456
+    restart: always
+  brook-ss:
+    image: umiqlo/brook-armhf
+    container_name: brook-ss
+    ports:
+      - "21314:21314/udp"
+      - "21314:21314/tcp"
+    environment:
+      - TYPE=ss
+      - SERVER_PW=123456
+    restart: always
