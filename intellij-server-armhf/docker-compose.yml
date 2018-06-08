@@ -1,0 +1,8 @@
+version: "3"
+services:
+  intellij:
+    image: umiqlo/intellij-server-armhf
+    container_name: intellij
+    ports:
+      - "41017:41017"
+    restart: always
