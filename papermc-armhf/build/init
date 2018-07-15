@@ -30,13 +30,18 @@ fi
 
 jarServer=paperclip-$BUILD_VERSION.jar
 
-wget $URL -O $jarServer
-echo "eula=true" > eula.txt
-echo "java -Xms${MIN_RAM}M -Xmx${MAX_RAM}M -jar $jarServer"
+if [ -f server/"$jarServer" ]
+then
+	echo "$jarServer found."
+else	
+	echo "$jarServer not found."
+	wget $URL -O $jarServer
+	echo "eula=true" > eula.txt
+	echo "java -Xms${MIN_RAM}M -Xmx${MAX_RAM}M -jar $jarServer"
 
-mv eula.txt server/
-mv $jarServer server/
+	mv eula.txt server/
+	mv $jarServer server/
+fi
+
 cd server/
-
-
 java -Xms${MIN_RAM}M -Xmx${MAX_RAM}M -jar $jarServer
