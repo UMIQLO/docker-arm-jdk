@@ -2,7 +2,7 @@ FROM umiqlo/jdk-armhf
 
 WORKDIR /opt/paper-mc
 
-ENV BUILD_VERSION="1.12.2"
+ENV BUILD_VERSION="latest"
 ENV MIN_RAM="384"
 ENV MAX_RAM="512"
 
