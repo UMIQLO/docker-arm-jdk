@@ -1,8 +1,0 @@
-version: "3"
-services:
-  kms:
-    image: umiqlo/vlmcsd-armhf
-    container_name: kms
-    ports:
-      - "1688:1688"
-    restart: always
